@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #F4EFE3;
+  color: #0A1E2E;
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .display {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+#team, #subscribers, #issues, #share-your-story, #advertise {
+  scroll-margin-top: 84px;
+}
+@media (max-width: 640px) {
+  #team, #subscribers, #issues, #share-your-story, #advertise {
+    scroll-margin-top: 120px;
+  }
+}
+
+/* svgMap style overrides to match brand */
+.svgMap-map-wrapper { background-color: #0d2436 !important; }
+.svgMap-map-image { background-color: #0d2436 !important; }
+.svgMap-tooltip {
+  background-color: #0A1E2E !important;
+  border: 1px solid #C9A24A !important;
+  color: #F4EFE3 !important;
+  border-radius: 4px !important;
+}
+.svgMap-tooltip-title { color: #E4C878 !important; font-family: 'Fraunces', serif !important; }
+.svgMap-tooltip-content { color: #F4EFE3 !important; }
+.svgMap-tooltip-pointer { background-color: #0A1E2E !important; border-color: #C9A24A !important; }
+.svgMap-map-controls-zoom { background-color: rgba(10,30,46,0.8) !important; }
