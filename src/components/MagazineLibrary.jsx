@@ -118,20 +118,6 @@ export default function MagazineLibrary() {
       href: "https://rebrand.ly/f50k90e",
       downloadKey: "Télécharger le PDF",
     },
-    {
-      key: "september-2026-de",
-      quarterTag: "Septmber 2026",
-      langTag: "DE",
-      cover: coverSeptember2026De,
-      coverAlt:
-        "OCEANS Magazin Cover September 2026, deutsche Ausgabe, Vol. 01 Ausgabe 04",
-      vol: "September-Ausgabe · Vol. 01, Ausgabe 04",
-      titleKey: "Exklusiv: Staatsabgeordnete Carol Kazeem",
-      bodyKey:
-        "Außerdem die Ungerechtigkeit gegenüber Witwen in Afrika, das Überleben eines verheerenden Feuers, und die Kunst, Nein zu sagen.",
-      href: "https://rebrand.ly/qw94xyi",
-      downloadKey: "PDF herunterladen",
-    },
   ];
 
   return (
