@@ -101,7 +101,7 @@ export default function MagazineLibrary() {
       titleKey: "Exclusive: State Rep. Carol Kazeem",
       bodyKey:
         "Plus the injustice widows face across Africa, surviving a business-destroying fire, and the art of saying no.",
-      href: "https://rb.gy/caks55",
+      href: "https://drive.google.com/file/d/1AXEIPFGCAgZX8z-KNyJdq12v2jRZ8oB6/view?usp=sharing",
       downloadKey: "downloadPdf",
     },
     {
@@ -115,9 +115,23 @@ export default function MagazineLibrary() {
       titleKey: "Exclusif : Députée d'État Carol Kazeem",
       bodyKey:
         "Ainsi que l'injustice faite aux veuves en Afrique, survivre à un incendie dévastateur, et l'art de dire non.",
-      href: "https://rebrand.ly/f50k90e",
+      href: "https://drive.google.com/file/d/1AEeMG_TahyBpx8z0goyEuDk4rS0RaOF-/view?usp=sharing",
       downloadKey: "Télécharger le PDF",
     },
+    // {
+    //   key: "september-2026-de",
+    //   quarterTag: "Septmber 2026",
+    //   langTag: "DE",
+    //   cover: coverSeptember2026De,
+    //   coverAlt:
+    //     "OCEANS Magazin Cover September 2026, deutsche Ausgabe, Vol. 01 Ausgabe 04",
+    //   vol: "September-Ausgabe · Vol. 01, Ausgabe 04",
+    //   titleKey: "Exklusiv: Staatsabgeordnete Carol Kazeem",
+    //   bodyKey:
+    //     "Außerdem die Ungerechtigkeit gegenüber Witwen in Afrika, das Überleben eines verheerenden Feuers, und die Kunst, Nein zu sagen.",
+    //   href: "https://rebrand.ly/qw94xyi",
+    //   downloadKey: "PDF herunterladen",
+    // },
   ];
 
   return (
