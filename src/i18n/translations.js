@@ -97,9 +97,9 @@ export const translations = {
     de: 'Verfügbare Ausgaben',
   },
   issuesCount: {
-    en: '5 issues',
-    fr: '5 numéros',
-    de: '5 Ausgaben',
+    en: '8 issues',
+    fr: '8 numéros',
+    de: '8 Ausgaben',
   },
   downloadPdf: {
     en: 'Download PDF',
