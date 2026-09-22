@@ -1,16 +1,18 @@
-import { useLanguage } from '../i18n/LanguageContext'
-import logo from '../assets/logo.png'
+import { useLanguage } from "../i18n/LanguageContext";
+import logo from "../assets/logo.png";
 
 export default function Nav() {
-  const { lang, setLang, t } = useLanguage()
+  const { lang, setLang, t } = useLanguage();
 
   const links = [
-    { href: '#team', label: t('navTeam') },
-    { href: '#subscribers', label: t('navSubscribers') },
-    { href: '#issues', label: t('navIssues') },
-    { href: '#share-your-story', label: t('navShareStory') },
-    { href: '#advertise', label: t('navAdvertise') },
-  ]
+    { href: "#team", label: t("navTeam") },
+    { href: "#subscribers", label: t("navSubscribers") },
+    { href: "#issues", label: t("navIssues") },
+    { href: "#share-your-story", label: t("navShareStory") },
+    { href: "#advertise", label: t("Advertise") },
+    { href: "#get-featured", label: t("GetFeatured") },
+    { href: "#talent-network", label: t("HireTalent") },
+  ];
 
   return (
     <nav className="sticky top-0 z-[100] bg-[#0a1e2e] backdrop-blur-md border-b border-gold/25">
@@ -19,13 +21,17 @@ export default function Nav() {
           className="flex items-center gap-2.5 min-w-0 no-underline"
           href="https://edenoceans.com"
         >
-          <img src={logo} alt="EdenOceans logo" className="h-[26px] sm:h-[34px] w-auto flex-shrink-0" />
+          <img
+            src={logo}
+            alt="EdenOceans logo"
+            className="h-[26px] sm:h-[34px] w-auto flex-shrink-0"
+          />
           <div className="flex flex-col leading-[1.15] min-w-0">
             <span className="font-display text-xs sm:text-sm text-cream font-semibold whitespace-nowrap">
               EdenOceans
             </span>
             <span className="text-[8px] sm:text-[10px] text-gold-light tracking-[0.08em] uppercase whitespace-nowrap">
-              {t('backToSite')}
+              {t("backToSite")}
             </span>
           </div>
         </a>
@@ -43,23 +49,23 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center border border-gold rounded-[20px] overflow-hidden flex-shrink-0">
-          {['en', 'fr', 'de'].map((code, i) => (
+          {["en", "fr", "de"].map((code, i) => (
             <button
               key={code}
               onClick={() => setLang(code)}
               className={` border-none py-[5px] px-[10px] sm:py-[7px] sm:px-[13px] font-sans text-[10.5px] sm:text-xs font-semibold tracking-[0.03em] cursor-pointer whitespace-nowrap transition-colors duration-200 ${
-                i > 0 ? 'border-l border-gold/40' : ''
+                i > 0 ? "border-l border-gold/40" : ""
               } ${
                 lang === code
-                  ? 'bg-gold text-navy-deep'
-                  : 'text-cream hover:bg-gold/20'
+                  ? "bg-gold text-navy-deep"
+                  : "text-cream hover:bg-gold/20"
               }`}
             >
               {code.toUpperCase()}
-            </button> 
+            </button>
           ))}
-        </div>    
+        </div>
       </div>
     </nav>
-  )
+  );
 }
