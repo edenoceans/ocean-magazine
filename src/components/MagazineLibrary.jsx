@@ -9,8 +9,8 @@ import coverSeptember2026En from "../assets/cover-september-2026-en.jpg";
 import coverSeptember2026Fr from "../assets/cover-september-2026-fr.jpg";
 import coverSeptember2026De from "../assets/cover-september-2026-de.jpg";
 import coverOctober2026En from "../assets/cover-october-2026-en.jpg";
-import coverOctober2026Fr from "../assets/cover-october-2026-Fr.jpg";
-import coverOctober2026De from "../assets/cover-october-2026-De.jpg";
+import coverOctober2026Fr from "../assets/cover-october-2026-fr.jpg";
+import coverOctober2026De from "../assets/cover-october-2026-de.jpg";
 
 const DownloadIcon = () => (
   <svg
