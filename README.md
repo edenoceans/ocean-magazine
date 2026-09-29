@@ -1,4 +1,4 @@
-# OCEANS Magazine — Vite + React + Tailwind
+# OCEANS Magazine — Vite + React + Tailwind.
 
 Converted from the original static HTML/CSS page into a componentized
 Vite + React app styled with Tailwind CSS.
