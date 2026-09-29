@@ -4,9 +4,13 @@ import coverJuly2026En from "../assets/cover-july-2026-en.jpeg";
 import coverJuly2026Fr from "../assets/cover-july-2026-fr.jpeg";
 import coverAugust2026En from "../assets/cover-august-2026-en.jpeg";
 import coverAugust2026Fr from "../assets/cover-august-2026-fr.jpeg";
+import coverAugust2026De from "../assets/cover-august-2026-de.jpg";
 import coverSeptember2026En from "../assets/cover-september-2026-en.jpg";
 import coverSeptember2026Fr from "../assets/cover-september-2026-fr.jpg";
 import coverSeptember2026De from "../assets/cover-september-2026-de.jpg";
+import coverOctober2026En from "../assets/cover-october-2026-en.jpg";
+import coverOctober2026Fr from "../assets/cover-october-2026-Fr.jpg";
+import coverOctober2026De from "../assets/cover-october-2026-De.jpg";
 
 const DownloadIcon = () => (
   <svg
@@ -88,7 +92,21 @@ export default function MagazineLibrary() {
       bodyKey:
         "Faire naître la renaissance agricole — ainsi que le parcours de Karen Hendrickson vers le Ghana, et bien plus dans ce numéro.",
       href: "https://forms.gle/aqGzcXxR8vCyKHt88",
-      downloadKey: "downloadPdf",
+      downloadKey: "Télécharger le PDF",
+    },
+    {
+      key: "august-2026-fr",
+      quarterTag: "August 2026",
+      langTag: "DE",
+      cover: coverAugust2026De,
+      coverAlt:
+        "OCEANS Magazin Cover August 2026, deutsche Ausgabe, Vol. 01 Ausgabe 03",
+      vol: "August-Ausgabe · Vol. 01, Ausgabe 03",
+      titleKey: "Afrikas Zukunft ist Grün",
+      bodyKey:
+        "Die landwirtschaftliche Renaissance einleiten — außerdem Karen Hendricksons Umzug nach Ghana und mehr in dieser Ausgabe.",
+      href: "https://forms.gle/aqGzcXxR8vCyKHt88",
+      downloadKey: "PDF herunterladen",
     },
     {
       key: "september-2026-en",
@@ -129,6 +147,49 @@ export default function MagazineLibrary() {
       titleKey: "Exklusiv: Staatsabgeordnete Carol Kazeem",
       bodyKey:
         "Außerdem die Ungerechtigkeit gegenüber Witwen in Afrika, das Überleben eines verheerenden Feuers, und die Kunst, Nein zu sagen.",
+      href: "https://rebrand.ly/ky7xw8m",
+      downloadKey: "PDF herunterladen",
+    },
+    {
+      key: "October-2026-en",
+      quarterTag: "October 2026",
+      langTag: "EN",
+      cover: coverOctober2026En,
+      coverAlt:
+        "OCEANS Magazine October 2026 cover, English edition, Vol. 02 Issue 01",
+      vol: "October Edition · Vol. 02, Issue 01",
+      titleKey: "Special Feature: Dr. Olapeju Simoyan",
+      bodyKey:
+        "An insightful conversation on addiction, authorship & music therapy — plus the highest paying jobs in Africa & the Caribbean, and five investor-ready businesses to start before 2027.",
+      href: "https://rebrand.ly/qw94xyi",
+      downloadKey: "Download PDF",
+    },
+    ,
+    {
+      key: "October-2026-fr",
+      quarterTag: "Octobre 2026",
+      langTag: "FR",
+      cover: coverOctober2026Fr,
+      coverAlt:
+        "Couverture du magazine OCEANS, Octobre 2026, édition française, Vol. 02 Numéro 01",
+      vol: "Édition d'Octobre · Vol. 02, Numéro 01",
+      titleKey: "Entretien Spécial : Dr Olapeju Simoyan",
+      bodyKey:
+        "Une conversation enrichissante sur la dépendance, l'autorité et la musicothérapie — ainsi que les emplois les mieux payés en Afrique et dans les Caraïbes, et cinq entreprises prêtes pour les investisseurs à lancer avant 2027.",
+      href: "https://rebrand.ly/qw94xyi",
+      downloadKey: "Télécharger le PDF",
+    },
+     {
+      key: "October-2026-de",
+      quarterTag: "Oktober 2026",
+      langTag: "DE",
+      cover: coverOctober2026De,
+      coverAlt:
+        "OCEANS Magazin Cover Oktober 2026, deutsche Ausgabe, Vol. 02 Ausgabe 01",
+      vol: "Oktober-Ausgabe · Vol. 02, Ausgabe 01",
+      titleKey: "Spezial-Interview: Dr. Olapeju Simoyan",
+      bodyKey:
+        "Ein aufschlussreiches Gespräch über Sucht, Autorität und Musiktherapie — außerdem die bestbezahlten Jobs in Afrika und der Karibik, und fünf investorenreife Geschäftsideen, die man vor 2027 starten kann.",
       href: "https://rebrand.ly/qw94xyi",
       downloadKey: "PDF herunterladen",
     },
