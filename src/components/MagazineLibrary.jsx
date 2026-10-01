@@ -161,7 +161,7 @@ export default function MagazineLibrary() {
       titleKey: "Special Feature: Dr. Olapeju Simoyan",
       bodyKey:
         "An insightful conversation on addiction, authorship & music therapy — plus the highest paying jobs in Africa & the Caribbean, and five investor-ready businesses to start before 2027.",
-      href: "https://rebrand.ly/qw94xyi",
+      href: "https://drive.google.com/file/d/1ozpWD7B_fgYuHTePW6mb09YdumQYD4Gk/view?usp=sharing",
       downloadKey: "Download PDF",
     },
     ,
@@ -176,7 +176,7 @@ export default function MagazineLibrary() {
       titleKey: "Entretien Spécial : Dr Olapeju Simoyan",
       bodyKey:
         "Une conversation enrichissante sur la dépendance, l'autorité et la musicothérapie — ainsi que les emplois les mieux payés en Afrique et dans les Caraïbes, et cinq entreprises prêtes pour les investisseurs à lancer avant 2027.",
-      href: "https://rebrand.ly/qw94xyi",
+      href: "https://drive.google.com/file/d/1SGNxaeOXGU8RxrYfUzuuv46T5zUlNJQA/view?usp=sharing",
       downloadKey: "Télécharger le PDF",
     },
      {
@@ -190,7 +190,7 @@ export default function MagazineLibrary() {
       titleKey: "Spezial-Interview: Dr. Olapeju Simoyan",
       bodyKey:
         "Ein aufschlussreiches Gespräch über Sucht, Autorität und Musiktherapie — außerdem die bestbezahlten Jobs in Afrika und der Karibik, und fünf investorenreife Geschäftsideen, die man vor 2027 starten kann.",
-      href: "https://rebrand.ly/qw94xyi",
+      href: "https://drive.google.com/file/d/1M58IOmNs8jbZzh_VgfzKsEmcwgg4sGV9/view?usp=sharing",
       downloadKey: "PDF herunterladen",
     },
   ];
