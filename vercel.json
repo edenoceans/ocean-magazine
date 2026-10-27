@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/read", "destination": "/index.html" },
+    { "source": "/read.html", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(september-en|september-fr)/pages/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    }
+  ]
+}

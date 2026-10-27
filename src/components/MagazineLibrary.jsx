@@ -121,6 +121,8 @@ export default function MagazineLibrary() {
         "Plus the injustice widows face across Africa, surviving a business-destroying fire, and the art of saying no.",
       href: "https://drive.google.com/file/d/1AXEIPFGCAgZX8z-KNyJdq12v2jRZ8oB6/view?usp=sharing",
       downloadKey: "downloadPdf",
+      readHref: "/read?issue=september-en&page=1",
+      readLabel: "📖 Read Online · Flipbook",
     },
     {
       key: "september-2026-fr",
@@ -135,6 +137,8 @@ export default function MagazineLibrary() {
         "Ainsi que l'injustice faite aux veuves en Afrique, survivre à un incendie dévastateur, et l'art de dire non.",
       href: "https://drive.google.com/file/d/1AEeMG_TahyBpx8z0goyEuDk4rS0RaOF-/view?usp=sharing",
       downloadKey: "Télécharger le PDF",
+      readHref: "/read?issue=september-fr&page=1",
+      readLabel: "📖 Lire en ligne · Feuilleter",
     },
     {
       key: "september-2026-de",
@@ -179,7 +183,7 @@ export default function MagazineLibrary() {
       href: "https://drive.google.com/file/d/1SGNxaeOXGU8RxrYfUzuuv46T5zUlNJQA/view?usp=sharing",
       downloadKey: "Télécharger le PDF",
     },
-     {
+    {
       key: "October-2026-de",
       quarterTag: "Oktober 2026",
       langTag: "DE",
@@ -246,6 +250,14 @@ export default function MagazineLibrary() {
               <p className="text-sm text-[#55636B] flex-1 mb-[18px] break-words">
                 {issue.bodyKey ? t(issue.bodyKey) : issue.body}
               </p>
+              {issue.readHref && (
+                <a
+                  className="inline-flex items-center justify-center gap-2 bg-gold text-navy-deep no-underline font-sans text-sm font-semibold tracking-[0.02em] py-[13px] px-[18px] rounded-[2px] transition-colors duration-250 border border-gold whitespace-normal text-center mb-[9px] hover:bg-gold-light hover:border-gold-light"
+                  href={issue.readHref}
+                >
+                  {issue.readLabel}
+                </a>
+              )}
               <a
                 className="inline-flex items-center justify-center gap-2 bg-navy-deep text-cream no-underline font-sans text-sm font-semibold tracking-[0.02em] py-[13px] px-[18px] rounded-[2px] transition-colors duration-250 border border-navy-deep whitespace-normal text-center hover:bg-gold hover:border-gold hover:text-navy-deep"
                 href={issue.href}

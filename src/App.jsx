@@ -9,8 +9,14 @@ import GetFeatured from "./components/GetFeatured";
 import TalentNetwork from "./components/TalentNetwork";
 import Partners from "./components/Partners";
 import Footer from "./components/Footer";
+import FlipbookReader from "./components/FlipbookReader";
 
 export default function App() {
+  // The flipbook reader lives at /read?issue=september-en&page=1 (legacy /read.html also works).
+  if (/^\/read(\.html)?\/?$/.test(window.location.pathname)) {
+    return <FlipbookReader />;
+  }
+
   return (
     <>
       <Nav />

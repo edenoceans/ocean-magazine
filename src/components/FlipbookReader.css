@@ -1,0 +1,101 @@
+/* OCEANS flipbook reader. Ported from read.html; every rule is scoped under .oceans-reader
+   so it cannot leak into (or be affected by) the rest of the site. */
+.oceans-reader{--navy:#0a1e2e;--navy2:#113a52;--gold:#c9a24a;--cream:#f4efe3}
+.oceans-reader *{box-sizing:border-box}
+.oceans-reader{margin:0;background:#0c1722;color:var(--cream);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.oceans-reader button,.oceans-reader a,.oceans-reader input{font:inherit}
+.oceans-reader a{color:inherit;text-decoration:none}
+.oceans-reader button{cursor:pointer}
+.oceans-reader header{height:69px;background:var(--navy);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px max(16px,calc((100vw - 1440px)/2));border-bottom:1px solid #c9a24a44}
+.oceans-reader header .brand{font:700 clamp(19px,2.5vw,29px) Georgia,serif;letter-spacing:2px;color:#e4c878}
+.oceans-reader header .sub{font-size:10px;letter-spacing:2px;color:#b8cad0}
+.oceans-reader header .right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.oceans-reader .pill{background:#142e40;border:1px solid #657b85;color:#f3efe4;border-radius:5px;padding:9px 13px;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.oceans-reader .pill.primary{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700}
+.oceans-reader .pill:hover{border-color:var(--gold)}
+.oceans-reader main{max-width:1500px;margin:0 auto;padding:18px 14px 32px}
+.oceans-reader .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#e4c878;text-align:center}
+.oceans-reader .intro{text-align:center;margin:0 0 14px;font:600 clamp(19px,3vw,28px) Georgia,serif}
+.oceans-reader .reader{position:relative;display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 212px);gap:8px}
+.oceans-reader .stage{position:relative;display:flex;align-items:center;justify-content:center;perspective:1600px;min-width:0;width:min(100%,1050px);height:min(70vh,720px);filter:drop-shadow(0 14px 24px #0008)}
+.oceans-reader .page{background:#fff;position:relative;height:100%;aspect-ratio:595.5/844.5;max-width:49.7%;overflow:hidden;transition:transform .35s ease,opacity .35s ease;transform-style:preserve-3d}
+.oceans-reader .page img{display:block;height:100%;width:100%;object-fit:contain}
+.oceans-reader .page.left{border-radius:3px 0 0 3px;box-shadow:inset -7px 0 9px #0003}
+.oceans-reader .page.right{border-radius:0 3px 3px 0;box-shadow:inset 7px 0 9px #0003}
+.oceans-reader .page.hidden{visibility:hidden}
+.oceans-reader .page.turn-next{transform-origin:left center;transform:rotateY(-25deg);opacity:.48}
+.oceans-reader .page.turn-prev{transform-origin:right center;transform:rotateY(25deg);opacity:.48}
+.oceans-reader .arrow{flex:0 0 44px;height:60px;border:1px solid #70828d;background:#16344a;color:#f4efe3;font-size:29px;border-radius:5px}
+.oceans-reader .arrow:hover{background:#1c5a6e}
+.oceans-reader .arrow:disabled{opacity:.25;cursor:default}
+.oceans-reader .toolbar{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:12px auto 0}
+.oceans-reader .toolbar label{font-size:13px;color:#c8d5d9}
+.oceans-reader .toolbar input{width:67px;padding:8px;background:#112c41;color:#fff;border:1px solid #698092;border-radius:5px;text-align:center}
+.oceans-reader .counter{min-width:100px;text-align:center;color:#e4c878;font-size:13px}
+.oceans-reader .note{text-align:center;color:#a8b9c3;font-size:12px;margin-top:16px}
+.oceans-reader .mobile-only{display:none}
+.oceans-reader #toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:#e4c878;color:#0a1e2e;padding:11px 18px;border-radius:7px;box-shadow:0 6px 20px #0008;display:none;z-index:9}
+.oceans-reader #thumbs{display:none;max-width:1100px;margin:20px auto 0;grid-template-columns:repeat(auto-fill,minmax(85px,1fr));gap:10px;max-height:290px;overflow:auto;padding:8px;background:#06111c;border:1px solid #314453;border-radius:8px}
+.oceans-reader #thumbs.open{display:grid}
+.oceans-reader #thumbs button{background:transparent;color:#e7d19a;border:1px solid transparent;padding:4px;border-radius:5px}
+.oceans-reader #thumbs button.current{border-color:var(--gold)}
+.oceans-reader #thumbs img{width:100%;height:auto;display:block}
+.oceans-reader #thumbs small{display:block;padding:4px}
+.oceans-reader .reader.zoom .stage{height:min(86vh,980px)}
+.oceans-reader .reader.zoom .page{max-width:49.7%}
+@media(max-width:700px){
+.oceans-reader header{height:auto;min-height:78px;padding:10px 12px;flex-wrap:wrap}
+.oceans-reader header .right{gap:5px}
+.oceans-reader .pill{padding:8px;font-size:11px}
+.oceans-reader .intro{margin:5px 0 12px}
+.oceans-reader .reader{min-height:65vh;gap:4px}
+.oceans-reader .stage{height:min(65vh,670px)}
+.oceans-reader .page{max-width:100%;height:auto;max-height:100%;width:auto;aspect-ratio:595.5/844.5}
+.oceans-reader .page.left{display:none}
+.oceans-reader .page.right{border-radius:4px}
+.oceans-reader .arrow{flex-basis:32px;height:55px;font-size:22px}
+.oceans-reader .desktop-only{display:none}
+.oceans-reader .mobile-only{display:inline}
+.oceans-reader .toolbar{gap:6px}
+.oceans-reader .reader.zoom .stage{height:min(76vh,850px)}
+.oceans-reader .reader.zoom .page{max-width:100%}
+}
+.oceans-reader .stage{transform-style:preserve-3d; isolation:isolate;}
+.oceans-reader .turn-sheet{position:absolute;z-index:20;transform-style:preserve-3d;pointer-events:none;transition:transform 780ms cubic-bezier(.25,.65,.21,1);will-change:transform;}
+.oceans-reader .turn-face{position:absolute;inset:0;overflow:hidden;background:white;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 3px 18px #0006;}
+.oceans-reader .turn-face img{display:block;width:100%;height:100%;object-fit:fill;}
+.oceans-reader .turn-face.back{transform:rotateY(180deg);}
+.oceans-reader .turn-sheet.next{transform-origin:left center;transform:rotateY(0deg);}
+.oceans-reader .turn-sheet.next.turning{transform:rotateY(-180deg);}
+.oceans-reader .turn-sheet.prev{transform-origin:right center;transform:rotateY(0deg);}
+.oceans-reader .turn-sheet.prev.turning{transform:rotateY(180deg);}
+.oceans-reader .page{transition:none!important;}
+@media(prefers-reduced-motion:reduce){
+.oceans-reader .turn-sheet{transition-duration:120ms}
+}
+.oceans-reader .actions-panel{max-width:920px;margin:22px auto 8px;padding:18px 20px;background:#102c40;border:1px solid #556c75;border-radius:10px}
+.oceans-reader .actions-panel h2{color:#e4c878;font:600 20px Georgia,serif;margin:0 0 6px}
+.oceans-reader .actions-panel p{color:#bdcfd5;font-size:13px;margin:0 0 14px}
+.oceans-reader .action-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.oceans-reader .action-group{border:1px solid #46606c;padding:14px;border-radius:8px;min-width:0}
+.oceans-reader .action-group h3{font-size:15px;margin:0 0 12px;color:#f4efe3}
+.oceans-reader .action-line{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.oceans-reader .action-line input{width:68px;padding:9px 6px;border-radius:5px;background:#061c2b;color:white;border:1px solid #647985;text-align:center}
+.oceans-reader .action-line label{font-size:12px;color:#c6d4d9}
+.oceans-reader .action-line .pill{padding:9px 11px}
+.oceans-reader .action-group small{display:block;color:#b5c9d1;margin-top:9px;line-height:1.5}
+.oceans-reader #sectionBanner{display:none;max-width:920px;margin:10px auto 0;background:#2c382d;border:1px solid #9bab76;border-radius:8px;padding:12px;color:#ecf0dc;text-align:center}
+.oceans-reader #sectionBanner a{color:#f6d785;text-decoration:underline}
+.oceans-reader button:disabled{cursor:wait;opacity:.65}
+@media(max-width:700px){
+.oceans-reader .action-grid{grid-template-columns:1fr}
+.oceans-reader .actions-panel{padding:12px}
+.oceans-reader .action-line{gap:7px}
+}
+
+/* React-port additions */
+.oceans-reader{min-height:100vh}
+.oceans-reader h1,.oceans-reader h2,.oceans-reader h3{letter-spacing:normal}
+.oceans-reader .na{max-width:520px;margin:0 auto;padding:120px 20px;text-align:center}
+.oceans-reader .na h1{font:600 28px Georgia,serif;margin:0 0 12px}
+.oceans-reader .na p{color:#bdcfd5;margin:0 0 22px}
