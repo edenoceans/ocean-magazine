@@ -234,13 +234,13 @@ function Reader({ issueKey, cfg, params }) {
   useEffect(() => {
     const prevTitle = document.title
     const prevLang = document.documentElement.lang
-    document.title = t.docTitle
+    document.title = cfg.month ? `${cfg.shareTitle} | OCEANS Magazine` : t.docTitle
     document.documentElement.lang = lang
     return () => {
       document.title = prevTitle
       document.documentElement.lang = prevLang
     }
-  }, [t.docTitle, lang])
+  }, [t.docTitle, lang, cfg.month, cfg.shareTitle])
 
   /* ----- keep URL, jump box and preloading in sync with the current page ----- */
   useEffect(() => {
@@ -484,10 +484,10 @@ function Reader({ issueKey, cfg, params }) {
 
       <main>
         <div className="eyebrow">
-          <span>{t.label}</span>
+          <span>{cfg.label || t.label}</span>
         </div>
         <h1 className="intro">
-          <span>{t.title}</span>
+          <span>{cfg.title || t.title}</span>
         </h1>
 
         <div className={`reader${zoom ? ' zoom' : ''}`}>
