@@ -1,0 +1,29 @@
+name: Install November magazine covers
+on:
+  push:
+    branches: [feature/november-2026-issues]
+    paths:
+      - OCEANS-November-Covers.zip
+      - .github/workflows/install-november-covers.yml
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack the three November covers
+        run: |
+          unzip -q -o OCEANS-November-Covers.zip -d public
+          test -s public/covers/november-2026-en.png
+          test -s public/covers/november-2026-fr.png
+          test -s public/covers/november-2026-de.png
+          rm OCEANS-November-Covers.zip
+      - name: Commit the covers
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/covers
+          git add -u OCEANS-November-Covers.zip
+          git commit -m 'assets: add November English French and German covers'
+          git push
