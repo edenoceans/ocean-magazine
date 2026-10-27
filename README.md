@@ -13,7 +13,7 @@ Vite + React app styled with Tailwind CSS.
 - `src/assets/` — images extracted from the original inline base64 data URIs
 - `index.html` — loads the `svgMap` library from the same CDN the original
   page used (it's a UMD library not published in a way that plays nicely
-  with bundlers, so it's kept as a script tag rather than an npm import)
+  with bundlers, so it's kept as a script tag rather than an npm import).
 
 ## Setup
 
