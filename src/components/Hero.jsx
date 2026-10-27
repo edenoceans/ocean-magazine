@@ -16,23 +16,27 @@ export default function Hero() {
         </svg>
       </div>
 
-      <p className="font-sans uppercase tracking-[0.28em] sm:tracking-[0.28em] text-[10px] sm:text-xs text-gold-light mb-[22px] opacity-90">
-        {t('heroEyebrow')}
-      </p>
-
-      <h1
-        className="font-display mb-5 leading-[0.98] break-words text-transparent bg-clip-text"
-        style={{
-          fontSize: 'clamp(42px, 8vw, 100px)',
-          backgroundImage: 'linear-gradient(180deg, #FFFDF6 0%, #E4C878 100%)',
-        }}
+      {/* Landing flyer: deliberately isolated from magazine browsing and reader features. */}
+      <div className="relative z-10 max-w-[940px] mx-auto border border-[#C9A24A]/50 px-5 py-10 sm:px-12 sm:py-14"
+        style={{ background: 'linear-gradient(150deg, rgba(12,46,64,0.85), rgba(4,20,31,0.94))' }}
       >
-        {t('heroTitle')}
-      </h1>
-
-      <p className="max-w-[700px] mx-auto text-[15px] sm:text-[16.5px] text-[#C9D6DD] font-normal">
-        {t('heroSub')}
-      </p>
+        <div className="mx-auto w-16 h-px bg-[#C9A24A] mb-7" aria-hidden="true" />
+        <p className="font-sans uppercase tracking-[0.35em] text-[11px] sm:text-xs text-gold-light mb-5">
+          DISCOVER · EXPLORE · CONNECT
+        </p>
+        <h1 className="font-display font-semibold leading-[1.02] text-[#FFFDF6] break-words"
+          style={{ fontSize: 'clamp(38px, 7.5vw, 84px)' }}
+        >
+          OCEANS <span className="text-[#E4C878]">E-MAGAZINE</span>
+        </h1>
+        <p className="font-sans uppercase tracking-[0.15em] sm:tracking-[0.24em] text-[#E4C878] text-base sm:text-2xl font-semibold mt-5">
+          YOUR ESSENTIAL GUIDE
+        </p>
+        <div className="mx-auto w-16 h-px bg-[#C9A24A] mt-7 mb-6" aria-hidden="true" />
+        <p className="max-w-[700px] mx-auto text-[15px] sm:text-[16.5px] text-[#C9D6DD] font-normal">
+          {t('heroSub')}
+        </p>
+      </div>
 
       <div className="mt-6 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
         <a
