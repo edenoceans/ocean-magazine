@@ -35,7 +35,8 @@ const COPY = {
     actionsTitle: 'Share or download pages',
     actionsDesc: 'Share a direct link or save just the pages you need.',
     singleTitle: 'Current page',
-    sharePage: '↗ Share this page',
+    sharePage: '↗ Share page image',
+    imageShareUnsupported: 'Image sharing is unavailable here. The page image has been downloaded so you can send it as a photo.',
     downloadPage: '↓ Download page',
     singleHint: 'Downloads the visible page as a WebP image.',
     rangeTitle: 'Page range / section',
@@ -83,7 +84,8 @@ const COPY = {
     actionsTitle: 'Partager ou télécharger des pages',
     actionsDesc: 'Partagez un lien direct ou enregistrez uniquement les pages souhaitées.',
     singleTitle: 'Page actuelle',
-    sharePage: '↗ Partager la page',
+    sharePage: '↗ Partager l’image de la page',
+    imageShareUnsupported: 'Le partage d’image n’est pas disponible ici. L’image de la page a été téléchargée pour être envoyée comme photo.',
     downloadPage: '↓ Télécharger la page',
     singleHint: 'Télécharge cette page au format image WebP.',
     rangeTitle: 'Section / plage de pages',
@@ -423,6 +425,32 @@ function Reader({ issueKey, cfg, params }) {
     return res.blob()
   }
 
+  // Share the actual page image as a file (not a website URL).
+  // On browsers without file sharing, download the image for manual attachment.
+  const sharePageImage = async () => {
+    setPageBusy(true)
+    try {
+      const imageBlob = await fetchPage(current)
+      const file = new File([imageBlob], `OCEANS-${cfg.fileTag}-page-${pad(current)}.webp`, {
+        type: imageBlob.type || 'image/webp',
+      })
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: t.shareDocTitle(current) })
+          return
+        } catch (error) {
+          if (error.name === 'AbortError') return
+        }
+      }
+      saveBlob(imageBlob, file.name)
+      toast(t.imageShareUnsupported)
+    } catch {
+      toast(t.downloadFailed)
+    } finally {
+      setPageBusy(false)
+    }
+  }
+
   const downloadPage = async () => {
     setPageBusy(true)
     try {
@@ -568,7 +596,7 @@ function Reader({ issueKey, cfg, params }) {
             <div className="action-group">
               <h3>{t.singleTitle}</h3>
               <div className="action-line">
-                <button className="pill" onClick={() => doShare(shareLink(current), t.shareDocTitle(current))}>
+                <button className="pill" onClick={sharePageImage} disabled={pageBusy}>
                   {t.sharePage}
                 </button>
                 <button className="pill primary" disabled={pageBusy} onClick={downloadPage}>
