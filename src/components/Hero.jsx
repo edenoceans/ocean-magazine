@@ -24,10 +24,10 @@ export default function Hero() {
         />
       </div>
 
-      <div className="mt-3 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
+      <div className="relative z-10 mt-3 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
         <a
           href="#issues"
-          className="inline-flex items-center justify-center gap-2 no-underline font-sans text-sm font-semibold tracking-[0.02em] py-[13px] px-[22px] rounded-[3px] transition-all duration-250 whitespace-nowrap border border-gold bg-gold text-navy-deep hover:bg-gold-light hover:border-gold-light"
+          className="inline-flex items-center justify-center gap-2 no-underline font-sans text-xs sm:text-sm font-semibold tracking-[0.02em] py-[9px] px-[15px] sm:py-[13px] sm:px-[22px] rounded-[3px] transition-all duration-250 whitespace-nowrap border border-gold bg-gold text-navy-deep hover:bg-gold-light hover:border-gold-light"
         >
           {t('browseLibrary')}
         </a>
