@@ -4,7 +4,7 @@ export default function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative text-cream text-center overflow-hidden px-6 pt-14 pb-[130px] sm:pt-[90px]"
+    <section className="relative text-cream text-center overflow-hidden px-2 pt-3 pb-[95px] sm:px-6 sm:pt-[90px] sm:pb-[130px]"
       style={{
         background: 'radial-gradient(120% 100% at 50% -10%, #113A52 0%, #0A1E2E 55%, #060F17 100%)',
       }}
@@ -16,7 +16,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-[850px] mx-auto">
+      <div className="relative z-10 w-full max-w-[850px] mx-auto">
         <img
           src={`${import.meta.env.BASE_URL}oceans-landing-flyer.jpg`}
           alt="OCEANS E-MAGAZINE: YOUR ESSENTIAL GUIDE — official promotional flyer"
@@ -24,7 +24,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="mt-6 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
+      <div className="mt-3 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
         <a
           href="#issues"
           className="inline-flex items-center justify-center gap-2 no-underline font-sans text-sm font-semibold tracking-[0.02em] py-[13px] px-[22px] rounded-[3px] transition-all duration-250 whitespace-nowrap border border-gold bg-gold text-navy-deep hover:bg-gold-light hover:border-gold-light"
