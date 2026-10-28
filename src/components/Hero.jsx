@@ -4,7 +4,7 @@ export default function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative text-cream text-center overflow-hidden px-2 pt-3 pb-[95px] sm:px-6 sm:pt-[90px] sm:pb-[130px]"
+    <section className="relative text-cream text-center overflow-hidden px-2 pt-3 pb-[38px] sm:px-6 sm:pt-[90px] sm:pb-[130px]"
       style={{
         background: 'radial-gradient(120% 100% at 50% -10%, #113A52 0%, #0A1E2E 55%, #060F17 100%)',
       }}
@@ -34,7 +34,7 @@ export default function Hero() {
       </div>
 
       <svg
-        className="absolute left-0 right-0 -bottom-px w-full h-[140px] block"
+        className="absolute left-0 right-0 -bottom-px w-full h-[55px] sm:h-[140px] block"
         viewBox="0 0 1440 140"
         preserveAspectRatio="none"
         aria-hidden="true"
