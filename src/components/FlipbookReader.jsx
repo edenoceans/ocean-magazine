@@ -505,7 +505,7 @@ function Reader({ issueKey, cfg, params }) {
             {t.shareIssue}
           </button>
           <a className="pill primary" href={cfg.pdfHref} target="_blank" rel="noopener noreferrer">
-            {t.pdf}
+            {cfg.pdfLabel || t.pdf}
           </a>
         </div>
       </header>

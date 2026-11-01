@@ -211,6 +211,8 @@ export default function MagazineLibrary() {
       body: "Dealing with heartbreak, overcoming phobias, job interview strategies, smart investing in 2027, and creative businesses around the world.",
       href: "https://forms.gle/ciTrm7oDaEwqyuEB7",
       downloadLabel: "Access November Edition",
+      readHref: "/read?issue=november-en&page=1",
+      readLabel: "📖 Read Online · Flipbook",
     },
     {
       key: "november-2026-fr",
@@ -223,6 +225,8 @@ export default function MagazineLibrary() {
       body: "Surmonter les chagrins d’amour, vaincre les phobies courantes, réussir un entretien d’embauche et investir intelligemment en 2027.",
       href: "https://forms.gle/Batfu5pq6bu6t3yT9",
       downloadLabel: "Accéder au numéro de novembre",
+      readHref: "/read?issue=november-fr&page=1",
+      readLabel: "📖 Lire en ligne · Feuilleter",
     },
     {
       key: "november-2026-de",
