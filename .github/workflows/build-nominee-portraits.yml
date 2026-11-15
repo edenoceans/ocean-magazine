@@ -34,8 +34,8 @@ jobs:
           os.makedirs('nominee_images',exist_ok=True)
           found=[]
           for n,cat,desc,fn,source in people:
-            h=hashlib.md5(fn.encode()).hexdigest()
-            url='https://upload.wikimedia.org/wikipedia/commons/'+h[:1]+'/'+h[:2]+'/'+quote(fn)
+            safe=fn.replace(' ','_'); h=hashlib.md5(safe.encode()).hexdigest()
+            url='https://upload.wikimedia.org/wikipedia/commons/'+h[:1]+'/'+h[:2]+'/'+quote(safe)
             try:
               resp=requests.get(url,timeout=35,headers={'User-Agent':'OCEANS-2026-Nominations/1.0 (info@edenoceans.com)'})
               resp.raise_for_status()
