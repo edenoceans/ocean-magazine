@@ -1,0 +1,98 @@
+name: Build OCEANS nominee portrait booklet
+on:
+  push:
+    branches: [reports/nominee-portrait-booklet-2026]
+    paths: [.github/workflows/build-nominee-portraits.yml]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install reportlab pillow requests
+      - name: Download verified Wikimedia portraits and create PDF
+        shell: bash
+        run: |
+          python - <<'PY'
+          import io,os,hashlib,requests
+          from urllib.parse import quote
+          from PIL import Image
+          from reportlab.pdfgen import canvas
+          from reportlab.lib.pagesizes import A4
+          from reportlab.lib.colors import HexColor
+          from reportlab.lib.utils import simpleSplit
+          people=[
+          ('Bilikiss Adebiyi-Abiola','Business Impact','Founder of Wecyclers, pioneering household recycling and rewards in Lagos.','KBF Africa - Bilikiss Adebiyi Abiola in 2019 (cropped).jpg','https://www.wecyclers.com/about/our-team/'),
+          ('Oreoluwa Lesi','Social and Humanitarian Impact','Founder of W.TEC, equipping Nigerian girls and women with digital skills.','Oreoluwa Somolu Lesi.jpg','https://oreoluwa.com/about-oreoluwa/'),
+          ('Farida Kabir','Technology Achievements','Founded OTRAC, a healthcare professional e-learning platform.','Farida Kabir.jpg','https://businessday.ng/interview/women-in-business/article/women-in-business-farida-kabir/'),
+          ('Prof. Olayinka David-West','Technology Achievements','Research and advocacy champion for inclusive digital finance in Nigeria.','Prof Olayink David-West.jpg','https://www.lbs.edu.ng/team/prof-olayinka-david-west/'),
+          ('Affiong Williams','Business Impact','Founder of ReelFruit, expanding Nigerian fruit processing and manufacturing.','Affiong Williams in 2016 (cropped).png','https://reelfruit.com/our-story/'),
+          ('Adepeju Jaiyeoba','Social and Humanitarian Impact','Founded Brown Button Foundation, improving access to safer childbirth supplies.','Adepeju Jaiyeoba awarded Yali Entrepreneurship Washington.png','https://maternalfigures.com/recwWq7zQrXsRggOP'),
+          ('Odunayo Eweniyi','Business and Technology','Co-founder of PiggyVest, developing accessible digital savings tools.','Odunayo Eweniyi.jpg','https://time.com/collections/time100-next-2021/5937623/end-sars-activists-feyikemi-abudu-odunayo-eweniyi-and-damilola-odufuwa/')
+          ]
+          os.makedirs('nominee_images',exist_ok=True)
+          found=[]
+          for n,cat,desc,fn,source in people:
+            h=hashlib.md5(fn.encode()).hexdigest()
+            url='https://upload.wikimedia.org/wikipedia/commons/'+h[:1]+'/'+h[:2]+'/'+quote(fn)
+            try:
+              resp=requests.get(url,timeout=35,headers={'User-Agent':'OCEANS-2026-Nominations/1.0 (info@edenoceans.com)'})
+              resp.raise_for_status()
+              im=Image.open(io.BytesIO(resp.content)).convert('RGB')
+              im.thumbnail((700,900))
+              out='nominee_images/'+str(len(found)+1)+'.jpg'
+              im.save(out,quality=86)
+              found.append((n,cat,desc,fn,source,out))
+              print('PORTRAIT OK',n)
+            except Exception as e: print('PORTRAIT UNAVAILABLE',n,str(e))
+          if len(found)<5: raise RuntimeError('Unable to verify at least five portrait downloads')
+          W,H=A4
+          pdf=canvas.Canvas('OCEANS_2026_Nigerian_Women_Nominee_Photos.pdf',pagesize=A4)
+          pdf.setTitle('OCEANS Women of the Year 2026 - Nigerian Nominees and Portraits')
+          for i,(n,cat,desc,fn,source,img) in enumerate(found):
+            if i%2==0:
+              if i: pdf.showPage()
+              pdf.setFillColor(HexColor('#0B3435'));pdf.rect(0,H-68,W,68,fill=1,stroke=0)
+              pdf.setFillColor(HexColor('#D5B061'));pdf.setFont('Helvetica-Bold',10);pdf.drawString(35,H-23,'OCEANS MAGAZINE')
+              pdf.setFillColorRGB(1,1,1);pdf.setFont('Helvetica-Bold',18);pdf.drawString(35,H-49,'WOMEN OF THE YEAR 2026')
+              pdf.setFillColor(HexColor('#0B3435'));pdf.setFont('Helvetica',9);pdf.drawString(35,H-87,'NIGERIAN WOMEN | NOMINATION SHORTLIST')
+            top=H-110-(i%2)*330
+            pdf.setFillColor(HexColor('#F8F7F1'));pdf.roundRect(32,top-305,W-64,302,9,stroke=0,fill=1)
+            im=Image.open(img);iw,ih=im.size;f=min(194/iw,236/ih);dw,dh=iw*f,ih*f
+            pdf.drawImage(img,39+(194-dw)/2,top-255+(236-dh)/2,dw,dh)
+            x=250
+            pdf.setFillColor(HexColor('#A47C29'));pdf.setFont('Helvetica-Bold',11);pdf.drawString(x,top-31,f'{i+1:02d}')
+            pdf.setFillColor(HexColor('#0B3435'));pdf.setFont('Helvetica-Bold',14)
+            for j,line in enumerate(simpleSplit(n,'Helvetica-Bold',14,W-x-45)):pdf.drawString(x,top-55-j*17,line)
+            pdf.setFillColor(HexColor('#15656B'));pdf.setFont('Helvetica-Bold',10)
+            for j,line in enumerate(simpleSplit(cat,'Helvetica-Bold',10,W-x-45)):pdf.drawString(x,top-102-j*15,line)
+            pdf.setFillColor(HexColor('#233B42'));pdf.setFont('Helvetica',10)
+            for j,line in enumerate(simpleSplit(desc,'Helvetica',10,W-x-45)):pdf.drawString(x,top-144-j*15,line)
+            pdf.setFillColor(HexColor('#667782'));pdf.setFont('Helvetica',8);pdf.drawString(x,top-268,'Photo: Wikimedia Commons')
+            pdf.linkURL(source,(x,top-236,W-45,top-190),relative=0)
+            pdf.setFont('Helvetica',7.5);pdf.drawString(35,18,'Candidate recommendations only. Confirm eligibility before nomination.')
+          pdf.showPage()
+          pdf.setFillColor(HexColor('#0B3435'));pdf.rect(0,H-67,W,67,fill=1,stroke=0)
+          pdf.setFillColorRGB(1,1,1);pdf.setFont('Helvetica-Bold',18);pdf.drawString(35,H-44,'Portrait credits and supporting sources')
+          y=H-100
+          for n,cat,desc,fn,source,img in found:
+            pdf.setFillColor(HexColor('#0B3435'));pdf.setFont('Helvetica-Bold',10);pdf.drawString(35,y,n)
+            page='https://commons.wikimedia.org/wiki/File:'+quote(fn.replace(' ','_'))
+            pdf.setFillColor(HexColor('#4B6570'));pdf.setFont('Helvetica',7)
+            pdf.drawString(35,y-14,'Portrait: Wikimedia Commons - '+fn[:82]);pdf.linkURL(page,(35,y-23,W-40,y-6))
+            pdf.drawString(35,y-27,'Profile: '+source[:103]);pdf.linkURL(source,(35,y-37,W-40,y-22))
+            y-=85
+          pdf.setFillColor(HexColor('#0B3435'));pdf.setFont('Helvetica',8)
+          pdf.drawString(35,51,'Photos used with credit to their Wikimedia Commons source and applicable licensing.')
+          pdf.drawString(35,37,'Obtain consent and confirm OCEANS Magazine subscription before formal nomination.')
+          pdf.save()
+          print('SUCCESS',len(found),'portrait cards')
+          PY
+      - name: Commit PDF
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add OCEANS_2026_Nigerian_Women_Nominee_Photos.pdf
+          git commit -m 'report: 2026 Nigerian nominee portraits and credits'
+          git push
