@@ -5,7 +5,7 @@ export default function Nav() {
   const { lang, setLang, t } = useLanguage();
 
   const links = [
-    { href: "/women-of-the-year-preview.html", label: "Women of the Year 2026" },
+    { href: `/women-of-the-year-preview.html?lang=${lang}`, label: t("navWomen2026") },
     { href: "#team", label: t("navTeam") },
     { href: "#subscribers", label: t("navSubscribers") },
     { href: "#issues", label: t("navIssues") },
