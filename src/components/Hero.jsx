@@ -24,7 +24,28 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 mt-3 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
+      <a
+        href="/women-of-the-year-preview.html"
+        aria-label="Explore the OCEANS Women of the Year 2026 gallery"
+        className="relative z-10 mx-auto mt-7 sm:mt-12 flex w-full max-w-[850px] flex-col sm:flex-row items-center gap-5 sm:gap-7 rounded-lg border border-[#D7AA56]/80 bg-[#091E3A] p-4 sm:p-5 text-left shadow-[0_15px_45px_rgba(0,0,0,0.28)] no-underline transition-all duration-200 hover:border-[#F9D88C] hover:bg-[#102E54] group"
+      >
+        <img
+          src={`${import.meta.env.BASE_URL}awards-2026/awards-landing.webp`}
+          alt="OCEANS Women of the Year 2026 official awards artwork"
+          className="w-[155px] sm:w-[142px] h-auto flex-none rounded border border-[#D7AA56]/70 object-contain"
+          loading="eager"
+        />
+        <div className="flex-1 min-w-0 text-center sm:text-left">
+          <p className="text-[#F6D68C] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.18em]">Featured · 2026 Awards Gallery</p>
+          <h2 className="mt-2 font-display text-[23px] sm:text-[30px] font-semibold leading-tight text-[#FFF3D5]">OCEANS Women of the Year 2026</h2>
+          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#D6E0EB]">Meet the remarkable women shaping the future. View their official award images and impact portfolios.</p>
+          <span className="mt-4 inline-flex items-center justify-center rounded bg-[#D7AA56] px-5 py-2.5 text-xs sm:text-sm font-semibold text-[#091E3A] group-hover:bg-[#F6D68C]">
+            Explore the Awardees →
+          </span>
+        </div>
+      </a>
+
+      <div className="relative z-10 mt-5 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
         <a
           href="#issues"
           className="inline-flex items-center justify-center gap-2 no-underline font-sans text-xs sm:text-sm font-semibold tracking-[0.02em] py-[9px] px-[15px] sm:py-[13px] sm:px-[22px] rounded-[3px] transition-all duration-250 whitespace-nowrap border border-gold bg-gold text-navy-deep hover:bg-gold-light hover:border-gold-light"
