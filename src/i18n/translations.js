@@ -1,4 +1,11 @@
 export const translations = {
+  navWomen2026: { en: "Women of the Year 2026", fr: "Femmes de l’année 2026", de: "Frauen des Jahres 2026" },
+  awardsFeatured: { en: "Featured · 2026 Awards Gallery", fr: "À la une · Galerie des lauréates 2026", de: "Im Fokus · Auszeichnungen 2026" },
+  awardsTitle: { en: "OCEANS Women of the Year 2026", fr: "OCEANS Femmes de l’année 2026", de: "OCEANS Frauen des Jahres 2026" },
+  awardsDescription: { en: "Meet the remarkable women shaping the future. View their official award images and impact portfolios.", fr: "Découvrez les femmes remarquables qui façonnent l’avenir. Consultez leurs portraits officiels et leurs portfolios de réalisations.", de: "Entdecken Sie bemerkenswerte Frauen, die die Zukunft gestalten. Sehen Sie ihre offiziellen Auszeichnungsbilder und Wirkungsportfolios." },
+  awardsExplore: { en: "Explore the Awardees →", fr: "Découvrir les lauréates →", de: "Preisträgerinnen entdecken →" },
+  awardsAria: { en: "Explore the OCEANS Women of the Year 2026 gallery", fr: "Découvrir la galerie OCEANS Femmes de l’année 2026", de: "Galerie OCEANS Frauen des Jahres 2026 entdecken" },
+  awardsAlt: { en: "Official artwork for OCEANS Women of the Year 2026", fr: "Visuel officiel d’OCEANS Femmes de l’année 2026", de: "Offizielles Motiv für OCEANS Frauen des Jahres 2026" },
   backToSite: {
     en: 'Back to main site',
     fr: 'Retour au site principal',
