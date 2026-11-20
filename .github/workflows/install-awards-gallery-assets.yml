@@ -1,0 +1,32 @@
+name: Install OCEANS 2026 awards gallery image assets
+on:
+  push:
+    branches:
+      - feature/awards-2026-gallery-real-images
+    paths:
+      - OCEANS_Awards_2026_Images_For_GitHub.zip
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract approved gallery images
+        run: |
+          set -euo pipefail
+          unzip -q -o OCEANS_Awards_2026_Images_For_GitHub.zip -d .
+          test -s public/awards-2026/awards-landing.webp
+          for person in toyin okoedion ifeoma emmanuella leah hildah; do
+            test -s "public/awards-2026/${person}-award.webp"
+            test -s "public/awards-2026/${person}-portfolio.webp"
+          done
+          test -s public/awards-2026/sarah-portfolio.webp
+          rm OCEANS_Awards_2026_Images_For_GitHub.zip
+      - name: Commit gallery images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/awards-2026 OCEANS_Awards_2026_Images_For_GitHub.zip
+          git commit -m "assets: install paired approved awards and portfolio images"
+          git push
