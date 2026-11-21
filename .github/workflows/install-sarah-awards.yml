@@ -1,0 +1,32 @@
+name: Install Sarah Jackson Solomon award and portfolio
+on:
+  push:
+    branches:
+      - feature/add-sarah-jackson-solomon-awards
+    paths:
+      - 'OCEANS_Sarah_Jackson_Solomon_Images*.zip'
+      - '.github/workflows/install-sarah-awards.yml'
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract Sarah's original approved images
+        run: |
+          set -euo pipefail
+          archive="$(find . -maxdepth 1 -type f -name 'OCEANS_Sarah_Jackson_Solomon_Images*.zip' | head -n 1)"
+          test -n "$archive"
+          unzip -q -o "$archive" -d .
+          test -s public/awards-2026/sarah-award.webp
+          test -s public/awards-2026/sarah-portfolio.webp
+          rm "$archive"
+      - name: Commit new awardee image assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A public/awards-2026
+          git add -u -- 'OCEANS_Sarah_Jackson_Solomon_Images*.zip'
+          git commit -m 'assets: install Sarah Jackson Solomon award and impact portfolio'
+          git push
