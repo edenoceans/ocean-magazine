@@ -25,7 +25,7 @@ export default function Hero() {
       </div>
 
       <a
-        href={`/women-of-the-year-preview.html?lang=${lang}`}
+        href={`/women-of-the-year-2026/?lang=${lang}`}
         aria-label={t("awardsAria")}
         className="relative z-10 mx-auto mt-7 sm:mt-12 flex w-full max-w-[850px] flex-col sm:flex-row items-center gap-5 sm:gap-7 rounded-lg border border-[#D7AA56]/80 bg-[#091E3A] p-4 sm:p-5 text-left shadow-[0_15px_45px_rgba(0,0,0,0.28)] no-underline transition-all duration-200 hover:border-[#F9D88C] hover:bg-[#102E54] group"
       >
