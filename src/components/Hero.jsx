@@ -24,28 +24,35 @@ export default function Hero() {
         />
       </div>
 
-      {/* Full-artwork award feature: no nested poster card or miniature thumbnail. */}
+      {/* A genuine edge-to-edge awards banner, not a poster inside a card. */}
       <a
         href={`/women-of-the-year-2026/?lang=${lang}`}
         aria-label={t('awardsAria')}
-        className="group relative z-10 mx-auto mt-7 sm:mt-12 block w-full max-w-[850px] overflow-hidden no-underline shadow-[0_24px_65px_rgba(0,0,0,0.4)] focus-visible:outline focus-visible:outline-4 focus-visible:outline-[#F6D68C]"
+        className="group relative z-10 mt-8 sm:mt-14 block w-screen left-1/2 -translate-x-1/2 overflow-hidden bg-[#050D32] text-left no-underline focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-[#FFE0A0]"
       >
-        <div className="absolute inset-0 z-10 pointer-events-none border-[2px] border-[#D7AA56]/80" aria-hidden="true" />
-        <div className="absolute inset-x-0 top-0 z-10 h-[5px] bg-gradient-to-r from-[#77501A] via-[#FFE7A0] to-[#77501A]" aria-hidden="true" />
-        <img
-          src={`${import.meta.env.BASE_URL}awards-2026/awards-landing.webp`}
-          alt={t('awardsAlt')}
-          className="block h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.015]"
-          loading="eager"
-        />
-        <div className="relative z-20 -mt-px flex flex-wrap items-center justify-center gap-3 bg-gradient-to-r from-[#05142C] via-[#102F58] to-[#05142C] px-4 py-4 sm:px-7 sm:py-5 border-t border-[#D7AA56]/70">
-          <span className="text-center text-[11px] sm:text-sm font-semibold tracking-[0.06em] text-[#F9E2A5]">
+        <div
+          className="relative h-[550px] sm:h-[560px] lg:h-[650px] overflow-hidden"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(2,9,35,.70), rgba(3,13,45,.15) 50%, rgba(3,10,40,.30)), url("${import.meta.env.BASE_URL}awards-2026/awards-landing.webp")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 50%',
+          }}
+        >
+          {/* The original navy, gold, ribbon and emblem artwork spans the entire width. */}
+          <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-[#E8C16F]/40" aria-hidden="true" />
+          <div className="absolute inset-x-0 top-0 h-[5px] bg-gradient-to-r from-[#A66A19] via-[#FFE6A7] to-[#A66A19]" aria-hidden="true" />
+          <div className="absolute inset-x-0 bottom-0 h-[7px] bg-gradient-to-r from-[#7B4C13] via-[#FFE3A2] to-[#7B4C13]" aria-hidden="true" />
+
+          {/* Desktop information sits outside the emblem rather than in a card. On phones the poster's own lettering remains the focus. */}
+          <div className="absolute left-[5%] top-[18%] hidden max-w-[36%] lg:block">
+            <span className="block text-xs font-semibold uppercase tracking-[.3em] text-[#FFE0A0]">{t('awardsFeatured')}</span>
+            <h2 className="mt-5 font-display text-[clamp(30px,3.5vw,56px)] leading-[1.06] text-[#FFF2D1] drop-shadow-[0_3px_14px_rgba(0,0,0,.85)]">{t('awardsTitle')}</h2>
+            <div className="mt-6 h-[2px] w-28 bg-[#E6B554]" aria-hidden="true" />
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,.9)]">{t('awardsDescription')}</p>
+          </div>
+          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-[5%] lg:translate-x-0 z-10 inline-flex min-w-[220px] items-center justify-center gap-3 border border-[#F7D68B] bg-[#061735]/90 px-6 py-3.5 text-xs sm:text-sm font-bold tracking-[.08em] uppercase text-[#FFE5AE] shadow-[0_5px_24px_rgba(0,0,0,.4)] transition-all duration-200 group-hover:bg-[#D7AA56] group-hover:text-[#07182C]">
             {t('awardsExplore')}
-          </span>
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#EFCF80] text-[#F9E2A5] transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14m-6-6 6 6-6 6" />
-            </svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
           </span>
         </div>
       </a>
