@@ -24,38 +24,78 @@ export default function Hero() {
         />
       </div>
 
-      {/* A genuine edge-to-edge awards banner, not a poster inside a card. */}
-      <a
-        href={`/women-of-the-year-2026/?lang=${lang}`}
-        aria-label={t('awardsAria')}
-        className="group relative z-10 mt-8 sm:mt-14 block w-screen left-1/2 -translate-x-1/2 overflow-hidden bg-[#050D32] text-left no-underline focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-[#FFE0A0]"
-      >
-        <div
-          className="relative h-[550px] sm:h-[560px] lg:h-[650px] overflow-hidden"
-          style={{
-            backgroundImage: `linear-gradient(90deg, rgba(2,9,35,.70), rgba(3,13,45,.15) 50%, rgba(3,10,40,.30)), url("${import.meta.env.BASE_URL}awards-2026/awards-landing.webp")`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 50%',
-          }}
+      {/* Mobile-first 2026 awards feature, based on the navy-and-gold concept.
+          Use the REAL, approved award imagery and names, not mockup awardees. */}
+      <div className="relative z-10 mt-8 sm:mt-14 w-screen left-1/2 -translate-x-1/2 overflow-hidden bg-[#020D2E] text-[#FFE6AA]">
+        <a
+          href={`/women-of-the-year-2026/?lang=${lang}`}
+          aria-label={t('awardsAria')}
+          className="group relative block w-full overflow-hidden bg-[#030B2D] no-underline"
         >
-          {/* The original navy, gold, ribbon and emblem artwork spans the entire width. */}
-          <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-[#E8C16F]/40" aria-hidden="true" />
-          <div className="absolute inset-x-0 top-0 h-[5px] bg-gradient-to-r from-[#A66A19] via-[#FFE6A7] to-[#A66A19]" aria-hidden="true" />
-          <div className="absolute inset-x-0 bottom-0 h-[7px] bg-gradient-to-r from-[#7B4C13] via-[#FFE3A2] to-[#7B4C13]" aria-hidden="true" />
-
-          {/* Desktop information sits outside the emblem rather than in a card. On phones the poster's own lettering remains the focus. */}
-          <div className="absolute left-[5%] top-[18%] hidden max-w-[36%] lg:block">
-            <span className="block text-xs font-semibold uppercase tracking-[.3em] text-[#FFE0A0]">{t('awardsFeatured')}</span>
-            <h2 className="mt-5 font-display text-[clamp(30px,3.5vw,56px)] leading-[1.06] text-[#FFF2D1] drop-shadow-[0_3px_14px_rgba(0,0,0,.85)]">{t('awardsTitle')}</h2>
-            <div className="mt-6 h-[2px] w-28 bg-[#E6B554]" aria-hidden="true" />
-            <p className="mt-5 max-w-sm text-base leading-relaxed text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,.9)]">{t('awardsDescription')}</p>
+          {/* Portrait award poster is never stretched or cropped across its heading on mobile. */}
+          <div className="relative mx-auto h-[305px] w-full max-w-[520px] overflow-hidden sm:h-[470px] sm:max-w-none lg:h-[560px]">
+            <img
+              src={`${import.meta.env.BASE_URL}awards-2026/awards-landing.webp`}
+              alt={t('awardsAlt')}
+              className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.025] sm:object-center"
+              loading="eager"
+            />
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#020D2E] via-transparent to-transparent" aria-hidden="true" />
           </div>
-          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-[5%] lg:translate-x-0 z-10 inline-flex min-w-[220px] items-center justify-center gap-3 border border-[#F7D68B] bg-[#061735]/90 px-6 py-3.5 text-xs sm:text-sm font-bold tracking-[.08em] uppercase text-[#FFE5AE] shadow-[0_5px_24px_rgba(0,0,0,.4)] transition-all duration-200 group-hover:bg-[#D7AA56] group-hover:text-[#07182C]">
+        </a>
+
+        <div className="relative mx-auto max-w-[920px] px-5 pb-14 pt-6 text-center sm:px-9 sm:pt-8">
+          <div className="mx-auto mb-4 flex max-w-[740px] items-center gap-3 sm:gap-5">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#E6BC60]" />
+            <p className="text-[11px] font-bold uppercase tracking-[.12em] text-[#F9D778] sm:text-[13px]">{t('awardsFeatured')}</p>
+            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#E6BC60]" />
+          </div>
+          <h2 className="mx-auto max-w-[720px] font-display text-[28px] leading-tight text-[#FFF1C4] sm:text-[44px]">
+            {t('awardsTitle')}
+          </h2>
+          <p className="mx-auto mt-4 max-w-[650px] text-[14px] leading-relaxed text-[#F0E7DC] sm:text-[17px]">
+            {t('awardsDescription')}
+          </p>
+          <a
+            href={`/women-of-the-year-2026/?lang=${lang}`}
+            className="group mx-auto mt-7 inline-flex min-h-[52px] w-full max-w-[325px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#E9A824] via-[#FFE08B] to-[#E6A21D] px-6 py-3 text-[14px] font-bold text-[#081635] shadow-[0_7px_25px_rgba(204,145,23,.32)] no-underline transition-transform hover:scale-[1.02] focus-visible:outline focus-visible:outline-4 focus-visible:outline-[#FFF5D0] sm:text-[16px]"
+          >
             {t('awardsExplore')}
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
-          </span>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+          </a>
+          <div className="mx-auto mt-12 grid max-w-[760px] gap-4 sm:grid-cols-2 sm:gap-5">
+            {[
+              { name: 'Amb. Sarah Jackson Solomon', category: 'Humanitarian & SDGs Impact', slug: 'amb-sarah-jackson-solomon', image: 'sarah-award.webp' },
+              { name: 'Dr Toyin Opesanmi', category: 'Global Healthcare Impact', slug: 'dr-toyin-opesanmi', image: 'toyin-award.webp' },
+            ].map((person) => (
+              <a
+                key={person.slug}
+                href={`/women-of-the-year-2026/${person.slug}/`}
+                className="group/card flex min-h-[130px] items-center gap-4 overflow-hidden rounded-[20px] border border-[#DDAE43] bg-gradient-to-br from-[#082254] via-[#051333] to-[#06153C] px-3 py-3 text-left no-underline transition-colors hover:bg-[#122D64] sm:min-h-[145px]"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}awards-2026/${person.image}`}
+                  alt={`Official OCEANS award for ${person.name}`}
+                  loading="lazy"
+                  className="h-[105px] w-[77px] shrink-0 rounded-lg border border-[#EAC16A] object-cover object-top sm:h-[120px] sm:w-[88px]"
+                />
+                <span className="min-w-0 flex-1 border-l border-[#C99E50]/70 pl-4">
+                  <span className="block font-display text-[17px] font-semibold leading-snug text-[#FFF3D1] sm:text-[19px]">{person.name}</span>
+                  <span className="mt-2 block text-[12px] italic leading-snug text-[#E7CA85] sm:text-[13px]">{person.category}</span>
+                </span>
+                <span className="pr-1 text-[#F7D47A] transition-transform group-hover/card:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+          <a
+            href={`/women-of-the-year-2026/?lang=${lang}`}
+            className="mt-7 inline-block text-[13px] font-semibold text-[#F6D687] underline underline-offset-4 hover:text-white sm:text-[15px]"
+          >
+            {t('awardsExplore')}
+          </a>
         </div>
-      </a>
+        <div className="h-2 bg-gradient-to-r from-[#986019] via-[#FFE39A] to-[#986019]" aria-hidden="true" />
+      </div>
 
       <div className="relative z-10 mt-5 sm:mt-8 inline-flex gap-3.5 flex-wrap justify-center">
         <a
