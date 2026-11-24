@@ -201,18 +201,6 @@ export default function MagazineLibrary() {
       downloadKey: "PDF herunterladen",
     },
     {
-      key: "december-2026-en",
-      quarterTag: "December 2026",
-      langTag: "EN",
-      cover: "/covers/december-2026-en.webp",
-      coverAlt: "OCEANS Magazine December 2026 English Christmas cover, Volume 02 Issue 03",
-      vol: "December Edition · Vol. 02, Issue 03",
-      title: "Christmas, Celebration & Impact",
-      body: "Our Women of the Year 2026, festive fashion, Christmas gift ideas, wellness, relationships and a special holiday message. Read all 146 pages online.",
-      readHref: "/read?issue=december-en&page=1",
-      readLabel: "📖 Read December · Flipbook",
-    },
-    {
       key: "november-2026-en",
       quarterTag: "November 2026",
       langTag: "EN",
@@ -251,6 +239,18 @@ export default function MagazineLibrary() {
       body: "Mit Liebeskummer umgehen, häufige Phobien überwinden, Vorstellungsgespräche meistern und klug investieren im Jahr 2027.",
       href: "https://forms.gle/bK8U6A8KnFExERE7A",
       downloadLabel: "November-Ausgabe öffnen",
+    },
+    {
+      key: "december-2026-en",
+      quarterTag: "December 2026",
+      langTag: "EN",
+      cover: "/covers/december-2026-en.webp",
+      coverAlt: "OCEANS Magazine December 2026 English Christmas cover, Volume 02 Issue 03",
+      vol: "December Edition · Vol. 02, Issue 03",
+      title: "Christmas, Celebration & Impact",
+      body: "Our Women of the Year 2026, festive fashion, Christmas gift ideas, wellness, relationships and a special holiday message. Read all 146 pages online.",
+      readHref: "/read?issue=december-en&page=1",
+      readLabel: "📖 Read December · Flipbook",
     },
   ];
 
