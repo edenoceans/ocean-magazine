@@ -504,9 +504,11 @@ function Reader({ issueKey, cfg, params }) {
           <button className="pill" onClick={() => doShare(shareLink(current), cfg.shareTitle)}>
             {t.shareIssue}
           </button>
-          <a className="pill primary" href={cfg.pdfHref} target="_blank" rel="noopener noreferrer">
-            {cfg.pdfLabel || t.pdf}
-          </a>
+          {cfg.pdfHref && (
+            <a className="pill primary" href={cfg.pdfHref} target="_blank" rel="noopener noreferrer">
+              {cfg.pdfLabel || t.pdf}
+            </a>
+          )}
         </div>
       </header>
 
