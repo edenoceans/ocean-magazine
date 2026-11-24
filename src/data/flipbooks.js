@@ -54,6 +54,16 @@ export const FLIPBOOKS = {
     label: 'Volume 02 · Issue 02 · November 2026',
     title: 'Read the November Edition',
   },
+  'december-en': {
+    lang: 'en',
+    total: 146,
+    folder: 'december-en',
+    fileTag: 'December-EN',
+    shareTitle: 'OCEANS Magazine — December 2026',
+    month: 'December',
+    label: 'Volume 02 · Issue 03 · December 2026',
+    title: 'Read the December Edition',
+  },
   'november-fr': {
     lang: 'fr',
     total: 142,

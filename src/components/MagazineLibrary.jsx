@@ -201,6 +201,18 @@ export default function MagazineLibrary() {
       downloadKey: "PDF herunterladen",
     },
     {
+      key: "december-2026-en",
+      quarterTag: "December 2026",
+      langTag: "EN",
+      cover: "/covers/december-2026-en.webp",
+      coverAlt: "OCEANS Magazine December 2026 English Christmas cover, Volume 02 Issue 03",
+      vol: "December Edition · Vol. 02, Issue 03",
+      title: "Christmas, Celebration & Impact",
+      body: "Our Women of the Year 2026, festive fashion, Christmas gift ideas, wellness, relationships and a special holiday message. Read all 146 pages online.",
+      readHref: "/read?issue=december-en&page=1",
+      readLabel: "📖 Read December · Flipbook",
+    },
+    {
       key: "november-2026-en",
       quarterTag: "November 2026",
       langTag: "EN",
@@ -301,15 +313,17 @@ export default function MagazineLibrary() {
                   {issue.readLabel}
                 </a>
               )}
-              <a
-                className="inline-flex items-center justify-center gap-2 bg-navy-deep text-cream no-underline font-sans text-sm font-semibold tracking-[0.02em] py-[13px] px-[18px] rounded-[2px] transition-colors duration-250 border border-navy-deep whitespace-normal text-center hover:bg-gold hover:border-gold hover:text-navy-deep"
-                href={issue.href}
-                target="_blank"
-                rel="noopener"
-              >
-                <DownloadIcon />
-                {issue.downloadKey ? t(issue.downloadKey) : issue.downloadLabel}
-              </a>
+              {issue.href && (
+                <a
+                  className="inline-flex items-center justify-center gap-2 bg-navy-deep text-cream no-underline font-sans text-sm font-semibold tracking-[0.02em] py-[13px] px-[18px] rounded-[2px] transition-colors duration-250 border border-navy-deep whitespace-normal text-center hover:bg-gold hover:border-gold hover:text-navy-deep"
+                  href={issue.href}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <DownloadIcon />
+                  {issue.downloadKey ? t(issue.downloadKey) : issue.downloadLabel}
+                </a>
+              )}
             </div>
           </article>
         ))}
